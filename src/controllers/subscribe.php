@@ -22,13 +22,17 @@ if (isset($_POST['submit'])) {
             $password = $_POST['password'];
             //create new object Users with data from form parameters
             $user = new Users($pseudo, $mail, $password);
-            $user->createUser();
-            
-            if ($user === true) {
-                echo('something wrong happend ! please contact an admin.');
-            } else {
-                echo('user added !');
-            }
+            //function to check if email or pseudo dosn't exist in bdd
+            $chechUser = $user ->checkUser($mail, $pseudo);
+            // create user only if check user dosnt return result from bdd
+            if ($chechUser === true) {
+                $createUser = $user->createUser();
+                if ($createUser === true) {
+                    echo('user added !');
+                } else {
+                    echo('something wrong happend ! please contact an admin.');
+                }
+            }  
         } else {
             echo ('mail not valid');
         }
