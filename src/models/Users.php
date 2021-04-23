@@ -1,67 +1,33 @@
 <?php
-require_once(__DIR__ . './Connect.php');
+require_once(__DIR__ . './User.php');
 
-class Users extends Connect
+class Users extends User
 {
-    protected $pseudo;
-    protected $mail;
-    protected $password;
-
-    public function __construct($pseudo, $mail, $password)
+    public function __construct()
     {
-        $this->_pseudo = $pseudo;
-        $this->_mail = $mail;
-        $this->_password = $password;
     }
-
-    public function checkUser()
+    function getUsers()
     {
         try {
             $pdo = $this::getPdo();
-            $mail = $pdo->query("SELECT 
-                mail 
-            FROM
-                users
-            WHERE 
-                mail = '$this->_mail'
-            ");
-            $pseudo = $pdo->query("SELECT 
-                pseudo
-            FROM 
-                users
-            WHERE
-                mail = '$this->_pseudo'
-            ");
-            if ($mail->rowCount() >= 1) {
-                return $msg = 'mail already register';
-            } else if ($pseudo->rowCount() >= 1 ) { 
-                return $msg = 'pseudo already register';
-            } else {
-                return true;
-            }
+            return $pdo->query("SELECT
+            u.id,
+            u.pseudo,
+            u.mail,
+            u.password,
+            r.name
+        FROM
+            users u
+        JOIN 
+            roles r 
+        ON 
+            u.id_role = r.id
+        ORDER BY 
+            r.name 
+        DESC
+        ");
         } catch (\PDOException $th) {
             return false;
         }
     }
-
-    public function createUser()
-    {
-        try {
-            $pdo = $this::getPdo();
-            $stmt = $pdo->prepare(
-                "INSERT INTO 
-                    `users`
-                        (`pseudo`,`mail`, `password`) 
-                    VALUES 
-                        (:pseudo, :mail, :password)"
-            );
-            $stmt->bindParam(':pseudo', $this->_pseudo);
-            $stmt->bindParam(':mail', $this->_mail);
-            $stmt->bindParam(':password', $this->_password);
-            return $stmt->execute();
-        } catch (\PDOException $th) {
-            return false;
-        }
-    }
-    
 }

@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . './../models/Users.php');
+require_once(__DIR__ . './../models/User.php');
 
 
 if (isset($_POST['submit'])) {
@@ -20,19 +20,23 @@ if (isset($_POST['submit'])) {
             $pseudo = $_POST['pseudo'];
             $mail = $_POST['mail'];
             $password = $_POST['password'];
+            $role = $_POST['role'];
             //create new object Users with data from form parameters
-            $user = new Users($pseudo, $mail, $password);
+            $user = new User($pseudo, $mail, $password, $role);
             //function to check if email or pseudo dosn't exist in bdd
-            $chechUser = $user ->checkUser($mail, $pseudo);
+            $checkUser = $user ->checkUser($mail, $pseudo);
+
             // create user only if check user dosnt return result from bdd
-            if ($chechUser === true) {
+            if ($checkUser === true) {
                 $createUser = $user->createUser();
                 if ($createUser === true) {
                     echo('user added !');
                 } else {
                     echo('something wrong happend ! please contact an admin.');
                 }
-            }  
+            }  else {
+                echo $checkUser;
+            }
         } else {
             echo ('mail not valid');
         }

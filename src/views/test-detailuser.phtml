@@ -1,0 +1,14 @@
+<?php
+    require_once(__DIR__ . './../models/Users.php');
+
+    $user = new Users();
+    $idUser = 22;
+    $getUserDetail = $user->detailUser($idUser);
+
+    foreach ($getUserDetail as $user) {
+        echo $user['pseudo'];
+        echo $user['password'];
+        echo $user['mail'];
+        echo $user['name'];
+    }
+?>
