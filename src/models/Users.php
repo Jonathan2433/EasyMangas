@@ -6,7 +6,7 @@ class Users extends User
     public function __construct()
     {
     }
-    function getUsers()
+    public function getUsers()
     {
         try {
             $pdo = $this::getPdo();

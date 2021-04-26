@@ -1,7 +1,9 @@
 <?php
     require_once(__DIR__ . './../controllers/user-edit.php');
+    $idUser = $_GET['idUser'];
 ?>
-<form action="./user-edit.phtml" method="POST">
+<form action="./user-edit.phtml?"<?php echo $idUser; ?> method="POST">
+    <input type="hidden" name="idUser" value=<?php echo $idUser; ?>>
     <input type="text" name="pseudo" id="pseudo">
     <input type="text" name="mail" id="mail">
     <input type="text" name="password" id="password">

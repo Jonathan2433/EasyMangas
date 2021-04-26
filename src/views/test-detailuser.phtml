@@ -2,7 +2,7 @@
     require_once(__DIR__ . './../models/Users.php');
 
     $user = new Users();
-    $idUser = 22;
+    $idUser = $_GET['idUser'];
     $getUserDetail = $user->detailUser($idUser);
 
     foreach ($getUserDetail as $user) {

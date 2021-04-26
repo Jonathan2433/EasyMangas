@@ -22,6 +22,14 @@ class User extends Connect
     {
         $this->_mail = $mail;
     }
+    protected function setPassword($password)
+    {
+        $this->_password = $password;
+    }
+    protected function setRole($role)
+    {
+        $this->_role = $role;
+    }
     public function checkUser()
     {
         try {
@@ -101,5 +109,29 @@ class User extends Connect
         WHERE
             u.id = $idUser
         ");
+    }
+    public function editUser($idUser)
+    {
+        try {
+            $pdo = $this::getPdo();
+            $stmt = $pdo->prepare(
+                "UPDATE
+                `users`
+            SET
+                pseudo = :pseudo ,
+                mail = :mail,
+                password = :password,
+                id_role = :id_role
+            WHERE
+                id = $idUser
+            ");
+            $stmt->bindParam(':pseudo', $this->_pseudo);
+            $stmt->bindParam(':mail', $this->_mail);
+            $stmt->bindParam(':password', $this->_password);
+            $stmt->bindParam(':id_role', $this->_role);
+            return $stmt->execute();
+        } catch (\PDOException $th) {
+            return false;
+        }
     }
 }
