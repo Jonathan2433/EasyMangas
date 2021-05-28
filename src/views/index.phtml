@@ -1,7 +1,23 @@
-<nav>
-    <a href="./index.phtml">INDEX</a>
-    <a href="./subscribe.phtml">SUBSCRIBE</a>
-    <a href="./test-detailuser.phtml">DETAIL</a>
-    <a href="./user-administration.phtml">USER-ADMIN</a>
-    <a href="./user-edit.phtml">USER EDIT</a>
-</nav>
+<?php
+    require_once(__DIR__ . './../controllers/index.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prout</title>
+    <link rel="stylesheet" href="./../../assets/public/css/dist/style.min.css">
+    <script src="./../../assets/public/js/dist/scripts.min.js"></script>
+</head>
+<body>
+    <nav>
+        <a href="./index.phtml">INDEX</a>
+        <a href="./subscribe.phtml">SUBSCRIBE</a>
+        <a href="./test-detailuser.phtml">DETAIL</a>
+        <a href="./user-administration.phtml">USER-ADMIN</a>
+        <a href="./user-edit.phtml">USER EDIT</a>
+    </nav>
+</body>
+</html>

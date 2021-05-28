@@ -1,0 +1,17 @@
+<?php
+    require_once(__DIR__ . './../models/Mangas.php');
+
+    $manga = new Mangas();
+    $idManga = $_GET['idManga'];
+    $getMangaDetail = $manga->detailManga($idManga);
+    foreach ($getMangaDetail as $manga) {
+        echo $manga['name'];
+        echo $manga['author'];
+        echo $manga['editor'];
+        echo $manga['tomes'];
+        echo $manga['img'];
+        echo $manga['resume'];
+    }
+?>
+
+

@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $number    = preg_match('@[0-9]@', $_POST['password']);
     //CHECK IF PASSWORD IS STRONG
     if (!$uppercase || !$lowercase || !$number || strlen($_POST['password']) < 8) {
-        $msg = 'Password to easy, please use a minimum of : 1 Uppercase character, 1 Lowercase character, 1 number and a password length of 8 minimum!';
+        $msg = 'Password to easy, please use a minimum of : 1 Uppercase character, 1 Lowercase character, 1 number and a password length of 8 minimum !';
         echo $msg;
         //////////////add reroot and msg///////////////////
         // header('Location: ./../../../subscribe.php?msg=' . $msg);

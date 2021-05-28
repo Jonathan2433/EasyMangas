@@ -1,0 +1,19 @@
+<?php
+    require_once(__DIR__ . './../controllers/manga-edit.php');
+    
+    $idManga = $_GET['idManga'];
+?>
+<form action="./manga-edit.phtml?"<?php echo $idManga; ?> method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="idManga" value=<?php echo $idManga; ?>>
+    <input type="text" name="name" id="name">
+    <input type="text" name="author" id="author">
+    <input type="text" name="editor" id="editor">
+    <input type="number" name="tomes" id="tomes">
+    <input type="text" name="resume" id="resume">
+    <input type="file" id="img" name="img">
+    <input type="submit" value="Subscribe !" name="submit">
+
+</form>
+
+
+

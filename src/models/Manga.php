@@ -7,13 +7,16 @@ class Manga extends Connect
     protected $author;
     protected $editor;
     protected $tomes;
+    protected $img;
 
-    public function __construct($name, $author, $editor, $tomes)
+    public function __construct($name, $author, $editor, $tomes, $img, $resume)
     {
         $this->_name = $name;
         $this->_author = $author;
         $this->_editor = $editor;
         $this->_tomes = $tomes;
+        $this->_img = $img;
+        $this->_resume = $resume;
     }
     protected function setName($name)
     {
@@ -31,6 +34,14 @@ class Manga extends Connect
     {
         $this->_tomes = $tomes;
     }
+    protected function setImg($img)
+    {
+        $this->_img = $img;
+    }
+    protected function setResume($resume)
+    {
+        $this->_resume = $resume;
+    }
     public function checkManga()
     {
         try {
@@ -38,7 +49,7 @@ class Manga extends Connect
             $name = $pdo->query("SELECT 
                 name 
             FROM
-                mangas
+                library
             WHERE 
                 name = '$this->_name'
             ");
@@ -58,15 +69,17 @@ class Manga extends Connect
             $pdo = $this::getPdo();
             $stmt = $pdo->prepare(
                 "INSERT INTO 
-                    mangas
-                (name,author, editor, tomes) 
+                    lybrary
+                (name,author, editor, tomes, img, resume) 
                     VALUES 
-                (:name, :author, :editor, :tomes)"
+                (:name, :author, :editor, :tomes, :img, :resume)"
             );
             $stmt->bindParam(':name', $this->_name);
             $stmt->bindParam(':author', $this->_author);
             $stmt->bindParam(':editor', $this->_editor);
-            $stmt->bindParam(':tomes', $this->_role);
+            $stmt->bindParam(':tomes', $this->_tomes);
+            $stmt->bindParam(':img', $this->_img);
+            $stmt->bindParam(':resume', $this->_resume);
             return $stmt->execute();
         } catch (\PDOException $th) {
             return false;
@@ -78,7 +91,7 @@ class Manga extends Connect
 
         $stmt = $pdo->prepare("DELETE  
             FROM 
-                `mangas` 
+                `lybrary` 
             WHERE
                 `id` = :id 
             LIMIT 1
@@ -93,9 +106,12 @@ class Manga extends Connect
             name,
             author,
             editor,
-            name
+            name,
+            tomes,
+            img,
+            resume
         FROM
-            mangas 
+            lybrary 
         WHERE
             id = $idManga
         ");
@@ -105,12 +121,14 @@ class Manga extends Connect
         try {
             $pdo = $this::getPdo();
             $stmt = $pdo->prepare("UPDATE
-                `mangas`
+                `lybrary`
             SET
                 name = :name ,
                 author = :author,
                 editor = :editor,
-                tomes = :tomes
+                tomes = :tomes,
+                img = :img,
+                resume = :resume
             WHERE
                 id = $idManga
             ");
@@ -118,6 +136,8 @@ class Manga extends Connect
             $stmt->bindParam(':author', $this->_author);
             $stmt->bindParam(':editor', $this->_editor);
             $stmt->bindParam(':tomes', $this->_tomes);
+            $stmt->bindParam(':img', $this->_img);
+            $stmt->bindParam(':resume', $this->_resume);
             return $stmt->execute();
         } catch (\PDOException $th) {
             return false;
