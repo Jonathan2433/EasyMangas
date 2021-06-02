@@ -1,6 +1,15 @@
 <?php
     require_once(__DIR__ . './../controllers/manga_administration.php');
+    $pageTitle = "Manga Administration";
+    ob_start();
     foreach ($getMangas as $manga) {
         echo $manga['name'];
     }
+?>
+
+    <h1>Manga Administration</h1>
+
+<?php
+    $content = ob_get_clean();
+    require_once('template/layout.phtml');
 ?>

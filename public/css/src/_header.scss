@@ -1,0 +1,9 @@
+body {
+    background: teal;
+    header#main-header {
+        display: flex;
+        flex-direction: row;
+        height: 20px;
+        justify-content: space-between;
+    }
+}

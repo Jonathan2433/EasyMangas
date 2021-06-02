@@ -29,7 +29,7 @@ gulp.task('browser-sync', function() {
 	})
 })
 gulp.task('style', function () {
-  return gulp.src('./assets/public/css/src/**/*.scss') //  on lui indique où sont les fichiers scss
+  return gulp.src('./public/css/src/**/*.scss') //  on lui indique où sont les fichiers scss
   	.pipe(sourcemaps.init()) // va indexer tous les fichiers css
     
     .pipe(sass({outputStyle: 'compressed'}).on('error', notify.onError())) // on l'envoie au préprocesseur sass de façon compressé
@@ -39,7 +39,7 @@ gulp.task('style', function () {
     .pipe(cleancss({level: {1: {specialComments: 0}}})) // permet de nettoyer le fichier css des commentaires
     
     .pipe(sourcemaps.write()) // ecrit le sourcemaps dans le fichier css compilé
-    .pipe(gulp.dest('./assets/public/css/dist')) // on lui indique où il envoie le fichier compilé css
+    .pipe(gulp.dest('./public/css/dist')) // on lui indique où il envoie le fichier compilé css
     .pipe(notify({message: 'Super, le CSS est bien compilé !!!', onLast: true})) // afficher message succes si tout va bien
     .pipe(browsersync.stream()); // rafraichi le navigateur avec les modifs
 });
@@ -47,7 +47,7 @@ gulp.task('style', function () {
 gulp.task('scripts', function() {
 	return gulp.src([
 		// './assets/libs/jquery/jquery-3.5.1.min.js',
-		'./assets/public/js/src/*.js'
+		'./public/js/src/*.js'
 	])
 	.pipe(sourcemaps.init())
 	.pipe(babel({
@@ -56,13 +56,13 @@ gulp.task('scripts', function() {
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify())
 	.pipe(sourcemaps.write())
-	.pipe(gulp.dest('./assets/public/js/dist'))
+	.pipe(gulp.dest('./public/js/dist'))
 	.pipe(notify({message: 'Super, le JS est bien compilé !!!', onLast: true})) // afficher message succes si tout va bien
     .pipe(browsersync.reload({stream: true})); // rafraichi le navigateur avec les modifs
 });
 
 gulp.task('image', function() {  // concatenation et optimisation des images 
-	return gulp.src('assets/public/img/src/**/*') // jpeg, jpg, png, svg
+	return gulp.src('/public/img/src/**/*') // jpeg, jpg, png, svg
 	.pipe(imagemin([
 	    imagemin.gifsicle({interlaced: true}),
 	    imagemin.mozjpeg({quality: 75, progressive: true}),
@@ -74,13 +74,13 @@ gulp.task('image', function() {  // concatenation et optimisation des images
 	        ]
 	    })
 	]))
-	.pipe(gulp.dest('./assets/public/img/dist/'))
+	.pipe(gulp.dest('./public/img/dist/'))
 });
 
 gulp.task('watch', function() {
-	gulp.watch('./assets/public/css/src/**/*.scss', gulp.parallel('style'))
-	gulp.watch('./assets/public/js/src/**/*.js', gulp.parallel('scripts'))
-	gulp.watch('./assets/public/img/src/**/*', gulp.parallel('image'))
+	gulp.watch('./public/css/src/**/*.scss', gulp.parallel('style'))
+	gulp.watch('./public/js/src/**/*.js', gulp.parallel('scripts'))
+	gulp.watch('./public/img/src/**/*', gulp.parallel('image'))
 });
 
 gulp.task('default', gulp.parallel('style', 'scripts', 'image', 'watch', 'browser-sync'));
