@@ -2,3 +2,9 @@ node_modules
 /.vscode
 /DESIGN
 /CDC
+public/css/src/_reset.scss
+public/css/dist/style.min.css
+assets/public/css/dist/header.min.css
+public/js/dist/scripts.min.js
+.gitignore
+assets/public/js/dist/scripts.min.js
