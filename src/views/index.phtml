@@ -2,12 +2,18 @@
     require_once('../src/controllers/index.php');
     ob_start();
     $pageTitle = 'Home';
+    if (isset($_SESSION['user'])) {
+        $userId = $_SESSION['user']['id'];
+        var_dump($userId);    
+    }else {
+        $userId = 0;
+    }
 ?>
 
     <h1>Easy Mangas</h1>
     <?php foreach ($mangas as $manga) {
         echo $manga['name'] . '<br>';
-        echo '<a href="add-to-my-library.php?mangaId=' . $manga['id'] . '">Add to my reading</a><br>';
+        echo '<a href="add-to-my-library.php?mangaId=' . $manga['id'] . '&userId=' . $userId . '">Add to my reading</a><br>';
     }
     $content = ob_get_clean();
     require_once('../src/views/template/layout.phtml'); 

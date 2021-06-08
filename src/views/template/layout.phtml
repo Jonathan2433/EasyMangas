@@ -1,4 +1,9 @@
 <?php 
+if (isset($_SESSION['user'])) {
+    var_dump($_SESSION['user']);
+}
+
+
     include ('template-parts/header.phtml'); 
         echo ($content);
     include ('template-parts/footer.phtml'); 

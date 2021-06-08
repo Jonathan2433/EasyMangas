@@ -11,13 +11,15 @@ if (isset($_SERVER['REDIRECT_URL'])) {
 } else {
     $currentUrl = $_SERVER['REQUEST_URI'];
 }
-if ($currentUrl === '/easymanga/public/') {
+if ($currentUrl === '/easymangas/') {
     $currentUrl = '/';
 }
 
 $routes = [
     '/'   => 'index.phtml',
     'index'   => 'index.phtml',
+    'login'   => 'login.phtml',
+    'logout'   => 'logout.phtml',
     'manga-administration'    => 'manga-administration.phtml',
     'manga-edit'    => 'manga-edit.phtml',
     'new-manga'    => 'new-manga.phtml',
@@ -34,5 +36,4 @@ if ($currentUrl != '/') {
 if (!isset($routes[$currentUrl])) {
     $currentUrl = '/404';
 }
-
 require_once('E:/EasyMangas/src/views/' . $routes[$currentUrl]);
