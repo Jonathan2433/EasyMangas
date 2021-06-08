@@ -31,6 +31,10 @@ if (isset($_POST['submit'])) {
                 $createUser = $user->createUser();
                 if ($createUser === true) {
                     echo('user added !');
+                    // session_start();
+                    // $_SESSION['user'] = $user;
+                    header('Location: index');
+                    exit;
                 } else {
                     echo('something wrong happend ! please contact an admin.');
                 }

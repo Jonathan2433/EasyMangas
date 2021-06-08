@@ -5,3 +5,4 @@
     $mangas = new Mangas();
 
     $mangas = $mangas->getMangas();
+

@@ -38,8 +38,10 @@ if (isset($_POST['submit'])) {
         }    
         if ($editManga === true) {
             echo ('Manga edited !');
+            header('Location: index');
         } else {
             echo ('something wrong happend ! please contact an admin.');
+            header('Location: index');
         }
     } else {
         echo $checkManga;

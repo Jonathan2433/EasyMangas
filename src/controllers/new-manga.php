@@ -34,8 +34,10 @@ if (isset($_POST['submit'])) {
         $createManga = $manga->createManga();
         if ($createManga === true) {
             echo ('manga added !');
+            header('Location: index');
         } else {
             echo ('something wrong happend ! please contact an admin.');
+            header('Location: index');
         }
     } else {
         echo $checkManga;

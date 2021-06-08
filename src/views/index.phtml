@@ -4,17 +4,36 @@
     $pageTitle = 'Home';
     if (isset($_SESSION['user'])) {
         $userId = $_SESSION['user']['id'];
-        var_dump($userId);    
     }else {
         $userId = 0;
     }
 ?>
 
     <h1>Easy Mangas</h1>
-    <?php foreach ($mangas as $manga) {
-        echo $manga['name'] . '<br>';
-        echo '<a href="add-to-my-library.php?mangaId=' . $manga['id'] . '&userId=' . $userId . '">Add to my reading</a><br>';
-    }
+    <section id="mangas-grid">
+    <?php 
+        foreach ($mangas as $manga) {
+                echo '
+                <article class="manga-card">
+                    <header class="manga-card-header">
+                        <img src="#" alt="preview of ' . $manga['name'] . '">
+                        <h3>' . $manga['name'] . '</h3> 
+                    </header>
+                    <div class="manga-card-body">
+                        <h4 class="manga-card-author">Author : ' . $manga['author'] . '</h4>                
+                        <h4 class="manga-card-editor">Editor : ' . $manga['editor'] . '</h4>                
+                        <h6 class="manga-card-tomes">Nb tomes : ' . $manga['tomes'] . '</h6>   
+                        <p class="manga-card-resume">Resume : ' . $manga['resume'] . '</p>
+                    </div>   
+                    <footer class="manga-card-footer">
+                        <a href="./src/controllers/add-to-library?mangaId=' . $manga['id'] . '&userId=' . $userId . '">Add to my reading</a>
+                    </footer>
+                </article>';
+        }
+    ?>
+    </section>
+<?php
     $content = ob_get_clean();
     require_once('../src/views/template/layout.phtml'); 
 ?>
+

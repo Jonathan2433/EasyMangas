@@ -69,7 +69,7 @@ class Manga extends Connect
             $pdo = $this::getPdo();
             $stmt = $pdo->prepare(
                 "INSERT INTO 
-                    lybrary
+                    library
                 (name,author, editor, tomes, img, resume) 
                     VALUES 
                 (:name, :author, :editor, :tomes, :img, :resume)"
@@ -91,7 +91,7 @@ class Manga extends Connect
 
         $stmt = $pdo->prepare("DELETE  
             FROM 
-                `lybrary` 
+                `library` 
             WHERE
                 `id` = :id 
             LIMIT 1
@@ -111,7 +111,7 @@ class Manga extends Connect
             img,
             resume
         FROM
-            lybrary 
+        library 
         WHERE
             id = $idManga
         ");
@@ -121,7 +121,7 @@ class Manga extends Connect
         try {
             $pdo = $this::getPdo();
             $stmt = $pdo->prepare("UPDATE
-                `lybrary`
+                `library`
             SET
                 name = :name ,
                 author = :author,
