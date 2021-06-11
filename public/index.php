@@ -36,4 +36,4 @@ if ($currentUrl != '/') {
 if (!isset($routes[$currentUrl])) {
     $currentUrl = '/404';
 }
-require_once('E:/EasyMangas/src/views/' . $routes[$currentUrl]);
+require_once(__DIR__ . '/../src/views/' . $routes[$currentUrl]);

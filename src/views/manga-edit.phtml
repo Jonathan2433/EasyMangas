@@ -3,7 +3,7 @@
     
     $idManga = $_GET['idManga'];
 ?>
-<form action="./src/controllers/manga-edit"<?php echo $idManga; ?> method="POST" enctype="multipart/form-data">
+<form action="manga-edit"<?php echo $idManga; ?> method="POST" enctype="multipart/form-data">
     <input type="hidden" name="idManga" value=<?php echo $idManga; ?>>
     <input type="text" name="name" id="name">
     <input type="text" name="author" id="author">

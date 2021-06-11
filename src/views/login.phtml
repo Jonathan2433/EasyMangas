@@ -3,7 +3,7 @@ require_once(__DIR__ . '/../controllers/login.php');
 ob_start();
 ?>
 <section id="login-form" class="form">
-    <form action="./src/controllers/login" method="POST">
+    <form action="login" method="POST">
         <input type="text" name="email" id="email" placeholder="Enter your E-mail" required>
         <input type="text" name="password" id="password" placeholder="Enter your Password" required>
         <input class="btn" class="submit" type="submit" value="Log-in" name="login">
