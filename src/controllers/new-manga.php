@@ -12,11 +12,11 @@ if (isset($_POST['submit'])) {
     //check if Manga already exist in bdd
     //stock data from form
     $mangaValues = [
-        'name' => $_POST['name'],
-        'author' => $_POST['author'],
-        'editor' => $_POST['editor'],
-        'tomes' => $_POST['tomes'],
-        'resume' => $_POST['resume'],
+        'name' => htmlentities($_POST['name'], ENT_QUOTES),
+        'author' => htmlentities($_POST['author'], ENT_QUOTES),
+        'editor' => htmlentities($_POST['editor'], ENT_QUOTES),
+        'tomes' => htmlentities($_POST['tomes'], ENT_QUOTES),
+        'resume' => htmlentities($_POST['resume'], ENT_QUOTES),
         'img' => $img
     ];
     //create new object Manga with data from form parameters
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     if ($checkManga === true) {
         // move the img file in good folder
         if ($_FILES['img']['name'] != '') {
-            move_uploaded_file($_FILES['img']['tmp_name'], './../../public/img/dist/' . $image);
+            move_uploaded_file($_FILES['img']['tmp_name'], './../../public/img/dist/' . $mangaValues['img']);
         }
         // create manga in bdd
         $createManga = $manga->createManga();

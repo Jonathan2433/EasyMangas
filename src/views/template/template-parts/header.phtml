@@ -2,6 +2,10 @@
 <html lang="en">
 <?php
     $pageTitle = $pageTitle ?? '';
+    if (isset($_SESSION['user'])) {
+        # code...
+        var_dump($_SESSION['user']);
+    }
 ?>
 
 <head>

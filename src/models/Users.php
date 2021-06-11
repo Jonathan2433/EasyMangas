@@ -30,30 +30,45 @@ class Users extends User
             return false;
         }
     }
-    public function getUserFromLogin($email, $password)
+    public function getUserFromLogin($mail, $password)
     {
         try {
             $pdo = $this::getPdo();
             $stmt = $pdo->prepare('SELECT
-                id,
-                pseudo,
-                mail,
-                id_role
+                    password
             FROM
-                users 
+                users
             WHERE
-                mail = :mail AND password = :password
+            mail = :mail
             ');
-            $stmt->bindParam(':mail', $email);
-            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':mail', $mail);
+
             $res = $stmt->execute();
-            if($res){
-                return $stmt->fetch(PDO::FETCH_ASSOC);
-            }else{
-                return false;
+
+            $passwordHach = $stmt->fetch();
+            $passwordHach = $passwordHach['password'];
+
+            if (password_verify($password, $passwordHach)) {
+                $stmt = $pdo->prepare('SELECT
+                    id,
+                    pseudo,
+                    mail,
+                    id_role
+                FROM
+                    users 
+                WHERE
+                    mail = :mail 
+                ');
+                $stmt->bindParam(':mail', $mail);
+                $res = $stmt->execute();
+                if ($res) {
+                    return $stmt->fetch(PDO::FETCH_ASSOC);
+                } else {
+                    return false;
+                }
             }
         } catch (\PDOException $th) {
-        return false;
+            return false;
         }
     }
 }

@@ -17,9 +17,10 @@ if (isset($_POST['submit'])) {
         //check if MAIL is valid
         if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
             //stock data from form
-            $pseudo = $_POST['pseudo'];
-            $mail = $_POST['mail'];
-            $password = $_POST['password'];
+            $pseudo = htmlentities($_POST['pseudo'], ENT_QUOTES);
+            $mail = htmlentities($_POST['mail'], ENT_QUOTES);
+            $password = htmlentities($_POST['password'], ENT_QUOTES);
+            $password = password_hash($password, PASSWORD_DEFAULT);
             $role = $_POST['role'];
             //create new object Users with data from form parameters
             $user = new User($pseudo, $mail, $password, $role);

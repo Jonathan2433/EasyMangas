@@ -11,11 +11,11 @@ if (isset($_POST['submit'])) {
     }
     //stock data from form
     $mangaValues = [
-        'name' => $_POST['name'],
-        'author' => $_POST['author'],
-        'editor' => $_POST['editor'],
-        'tomes' => $_POST['tomes'],
-        'resume' => $_POST['resume'],
+        'name' => htmlentities($_POST['name'], ENT_QUOTES),
+        'author' => htmlentities($_POST['author'], ENT_QUOTES),
+        'editor' => htmlentities($_POST['editor'], ENT_QUOTES),
+        'tomes' => htmlentities($_POST['tomes'], ENT_QUOTES),
+        'resume' => htmlentities($_POST['resume'], ENT_QUOTES),
         'img' => $img,
         'id' => $_POST['idManga'],
     ];
@@ -27,11 +27,11 @@ if (isset($_POST['submit'])) {
     if ($checkManga === true) {
         $editManga = $manga->editManga($mangaValues['id']);
         if($_FILES['img']['name'] != ''){
-            move_uploaded_file($_FILES['img']['tmp_name'], __DIR__ . ' ./../../public/img/dist/' . $image);
+            move_uploaded_file($_FILES['img']['tmp_name'], __DIR__ . ' ./../../public/img/dist/' . $mangaValues['img']);
             if($manga['img'] != 'default.jpg'){
                 /**
                  * unlink permet de supprimer un fichier
-                 * Nous supprimer l'ancienne image si ce n'est pas default.jpg
+                 * Nous supprimons l'ancienne image si ce n'est pas default.jpg
                  */
                 unlink(__DIR__ . ' ./../../public/img/dist/' . $manga['img']);
             }

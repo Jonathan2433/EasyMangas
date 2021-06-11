@@ -11,7 +11,7 @@ if (isset($_SERVER['REDIRECT_URL'])) {
 } else {
     $currentUrl = $_SERVER['REQUEST_URI'];
 }
-if ($currentUrl === '/easymangas/') {
+if ($currentUrl === '/easymanga/') {
     $currentUrl = '/';
 }
 

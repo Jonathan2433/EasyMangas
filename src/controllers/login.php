@@ -1,15 +1,16 @@
 <?php
 if (isset($_POST['login'])) {
     require_once(__DIR__ . '/../models/Users.php');
-    $user = new Users();
-    $user = $user->getUserFromLogin($_POST['email'], $_POST['password']);
-    if ($user == false) {
+    $users = new Users();
+    $users = $users->getUserFromLogin(htmlentities($_POST['email'], ENT_QUOTES), htmlentities($_POST['password'], ENT_QUOTES));
+    if ($users == false) {
+        var_dump('yo soi ici');die;
         return $errorMsg = 'Echec de connexion, veuillez vérifiez vos paramétres de connexion !';
         header('Location: login');
         exit;
     } else {
         session_start();
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = $users;
         header('Location: index');
         exit;
     }
