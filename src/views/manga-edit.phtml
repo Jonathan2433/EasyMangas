@@ -1,18 +1,24 @@
 <?php
     require_once(__DIR__ . './../controllers/manga-edit.php');
-    
+    ob_start();
+    $pageTitle = 'Manga edit';
+
     $idManga = $_GET['idManga'];
 ?>
-<form action="manga-edit"<?php echo $idManga; ?> method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="idManga" value=<?php echo $idManga; ?>>
-    <input type="text" name="name" id="name">
-    <input type="text" name="author" id="author">
-    <input type="text" name="editor" id="editor">
-    <input type="number" name="tomes" id="tomes">
-    <input type="text" name="resume" id="resume">
-    <input type="file" id="img" name="img">
-    <input type="submit" value="Subscribe !" name="submit">
-</form>
-
-
+<section id="manga-edit-form" class="form my-5">
+    <form action="manga-edit"<?php echo $idManga; ?> method="POST" enctype="multipart/form-data" class="d-flex f-col g-2 w25 m-auto">
+        <input type="hidden" name="idManga" value=<?php echo $idManga; ?>>
+        <input type="text" name="name" id="name" placeholder="Name of manga">
+        <input type="text" name="author" id="author" placeholder="Author of manga">
+        <input type="text" name="editor" id="editor" placeholder="Editor of manga">
+        <input type="number" name="tomes" id="tomes" placeholder="Tome's number of manga">
+        <input type="text" name="resume" id="resume" placeholder="Resume of manga">
+        <input type="file" id="img" name="img">
+        <input type="submit" value="Submit !" name="submit">
+    </form>
+</section>
+<?php
+    $content = ob_get_clean();
+    require_once('../src/views/template/layout.phtml'); 
+?>
 

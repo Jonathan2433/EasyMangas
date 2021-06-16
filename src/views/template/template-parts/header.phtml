@@ -3,8 +3,7 @@
 <?php
     $pageTitle = $pageTitle ?? '';
     if (isset($_SESSION['user'])) {
-        # code...
-        var_dump($_SESSION['user']);
+        $idUser = $_SESSION['user']['id'];
     }
 ?>
 
@@ -15,22 +14,45 @@
     <title>EasyManga | <?php echo $pageTitle ?>
     </title>
     <link rel="stylesheet" href="./css/dist/style.min.css">
+    <link rel="stylesheet" href="./css/framework/config.css">
+    <link rel="stylesheet" href="./css/framework/layout.css">
+    <link rel="stylesheet" href="./css/framework/reboot.css">
+    <link rel="stylesheet" href="./css/framework/utilities.css">
 </head>
 
-<body>
-    <header id="main-header">
+<body class="bg-dark">
+    <header id="main-header" class="d-flex f-row x-flex-between bg-light">
         <a id="main-logo" href="index"><img src="" alt="Logo Easy Mangas"></a>
-        <nav>
-            <a href="index">INDEX</a>
-            <a href="subscribe">SUBSCRIBE</a>
-            <a href="test-detailuser">DETAIL</a>
-            <a href="user-administration">USER-ADMIN</a>
-            <a href="user-edit">USER EDIT</a>
-            <a href="new-manga">NEW MANGA</a>
-            <a href="manga-edit">MANGA EDIT</a>
-            <a href="login">LOGIN</a>
-            <a href="logout">LOGOUT</a>
-            <a href="subscribe">SUBSCRIBE</a>
+        <nav class="d-flex f-row g-1 p-2">
+            <?php 
+                if (basename($_SERVER['REQUEST_URI']) != 'index') { ?>
+                    <a class="p-1 bg-dark color-light" href="index">INDEX</a>
+            <?php } ?>
+            <?php 
+                if (isset($_SESSION['user']) && basename($_SERVER['REQUEST_URI']) != 'manga-administration') { ?>
+                    <a class="p-1 bg-dark color-light" href="manga-administration">MANGA-ADMIN</a>
+            <?php } ?>
+
+            <!-- <?php 
+                if (isset($_SESSION['user']) && basename($_SERVER['REQUEST_URI']) != 'test-detailuser') { ?>
+                    <a class="p-1 bg-dark color-light" href="test-detailuser?idUser=<?php echo $idUser ?>">DETAIL</a>
+            <?php } ?> -->
+            <?php 
+                if (isset($_SESSION['user']) && basename($_SERVER['REQUEST_URI']) != 'user-administration') { ?>
+                    <a class="p-1 bg-dark color-light" href="user-administration">USER-ADMIN</a>
+            <?php } ?>
+            <?php 
+                if (!isset($_SESSION['user']) && basename($_SERVER['REQUEST_URI']) != 'subscribe') { ?>
+                    <a class="p-1 bg-dark color-light" href="subscribe">SUBSCRIBE</a>
+            <?php } ?>
+            <?php 
+                if (!isset($_SESSION['user']) && basename($_SERVER['REQUEST_URI']) != 'login') { ?>
+                    <a class="p-1 bg-dark color-light" href="login">LOGIN</a>
+            <?php } ?>
+            <?php 
+                if (isset($_SESSION['user'])) { ?>
+                    <a class="p-1 bg-dark color-light" href="logout">LOGOUT</a>
+            <?php } ?>
         </nav>
     </header>
 

@@ -14,6 +14,7 @@ class Users extends User
             u.id,
             u.pseudo,
             u.mail,
+            u.id_role,
             u.password,
             r.name
         FROM
@@ -24,7 +25,7 @@ class Users extends User
             u.id_role = r.id
         ORDER BY 
             r.name 
-        DESC
+        ASC
         ");
         } catch (\PDOException $th) {
             return false;

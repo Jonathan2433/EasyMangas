@@ -1,11 +1,21 @@
 <?php
     require_once(__DIR__ . './../controllers/subscribe.php');
-?>
-<form action="subscribe" method="POST">
-    <input type="text" name="pseudo" id="pseudo">
-    <input type="text" name="mail" id="mail">
-    <input type="text" name="password" id="password">
-    <input type="hidden" name="role" id="role" value=2>
-    <input type="submit" value="Subscribe !" name="submit">
-</form>
+    ob_start();
+    $pageTitle = 'Subscribe';
 
+?>
+<section id="subscribe-form" class="form my-5">
+    <form action="subscribe" method="POST" class="d-flex f-col g-2 w25 m-auto">
+        <input type="text" name="pseudo" id="pseudo" placeholder="Your Pseudo">
+        <input type="text" name="mail" id="mail" placeholder="Your E-mail">
+        <input type="text" name="password" id="password" placeholder="Your Password">
+        <input type="hidden" name="role" id="role" value=2>
+        <input type="submit" value="Subscribe !" name="submit">
+    </form>
+    <a class="d-block mt-2 m-auto btn txt-center" href="login">You already have an account ? Login here</a></p>
+</section>
+
+<?php
+    $content = ob_get_clean();
+    require_once('../src/views/template/layout.phtml'); 
+?>

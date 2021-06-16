@@ -1,39 +1,36 @@
 <?php
-    require_once('../src/controllers/index.php');
-    ob_start();
-    $pageTitle = 'Home';
-    if (isset($_SESSION['user'])) {
-        $userId = $_SESSION['user']['id'];
-    }else {
-        $userId = 0;
-    }
+require_once('../src/controllers/index.php');
+ob_start();
+$pageTitle = 'Home';
+if (isset($_SESSION['user'])) {
+    $userId = $_SESSION['user']['id'];
+}
 ?>
 
-    <h1>Easy Mangas</h1>
-    <section id="mangas-grid">
-    <?php 
-        foreach ($mangas as $manga) { ?>
-                <article class="manga-card">
-                    <header class="manga-card-header">
-                        <img src="#" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
-                        <h3><?php echo $manga['name'] ?></h3> 
-                    </header>
-                    <div class="manga-card-body">
-                        <h4 class="manga-card-author">Author : <?php echo $manga['author'] ?></h4>                
-                        <h4 class="manga-card-editor">Editor : <?php echo $manga['editor'] ?></h4>                
-                        <h6 class="manga-card-tomes">Nb tomes : <?php echo $manga['tomes'] ?></h6>   
-                        <p class="manga-card-resume">Resume : <?php echo $manga['resume'] ?></p>
-                    </div>   
-                    <?php if (isset($_SESSION['user'])) { ?>
-                    <footer class="manga-card-footer">
-                        <a href="./src/controllers/add-to-library?mangaId=' . $manga['id'] . '&userId=' . $userId . '">Add to my reading</a>
-                    </footer>
-                    <?php } ?>
-                </article>
-        <?php } ?>
-    </section>
+<h1 class="txt-center color-main">Easy Mangas</h1>
+<section id="mangas-grid" class="container grid g-2 mt-2 m-auto w-auto">
+    <?php
+    foreach ($mangas as $manga) { ?>
+        <article class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
+            <header class="manga-card-header my-2">
+                <img class="txt-center" src="#" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
+                <h3 class="manga-header-name color-dark txt-center"><?php echo $manga['name'] ?></h3>
+            </header>
+            <div class="manga-card-body txt-center d-flex f-col g-1">
+                <h4 class="manga-card-author color-dark">Author : <?php echo $manga['author'] ?></h4>
+                <h4 class="manga-card-editor color-dark">Editor : <?php echo $manga['editor'] ?></h4>
+                <h6 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
+                <p class="manga-card-resume color-dark">Resume : <?php echo $manga['resume'] ?></p>
+            </div>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <footer class="manga-card-footer d-flex x-flex-center mb-2">
+                    <a class="p-1 bg-dark color-light" href="add-to-library?mangaId=<?php echo $manga['id'] . '&userId=' . $userId ?>">Add to my reading</a>
+                </footer>
+            <?php } ?>
+        </article>
+    <?php } ?>
+</section>
 <?php
-    $content = ob_get_clean();
-    require_once('../src/views/template/layout.phtml'); 
+$content = ob_get_clean();
+require_once('../src/views/template/layout.phtml');
 ?>
-

@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . './../models/User.php');
+require_once(__DIR__ . './../models/Users.php');
 
 
 if (isset($_POST['submit'])) {
@@ -11,8 +12,8 @@ if (isset($_POST['submit'])) {
         $msg = 'Password to easy, please use a minimum of : 1 Uppercase character, 1 Lowercase character, 1 number and a password length of 8 minimum !';
         echo $msg;
         //////////////add reroot and msg///////////////////
-        // header('Location: ./../../../subscribe.php?msg=' . $msg);
-        // exit;
+        header('Location: subscribe?msg=' . $msg);
+        exit;
     } else {
         //check if MAIL is valid
         if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
@@ -32,10 +33,21 @@ if (isset($_POST['submit'])) {
                 $createUser = $user->createUser();
                 if ($createUser === true) {
                     echo('user added !');
-                    // session_start();
-                    // $_SESSION['user'] = $user;
-                    header('Location: index');
-                    exit;
+
+
+
+                    $users = new Users();
+                    $users = $users->getUserFromLogin(htmlentities($_POST['mail'], ENT_QUOTES), htmlentities($_POST['password'], ENT_QUOTES));
+                    if ($users == false) {
+                        return $errorMsg = 'Echec de connexion, veuillez vérifiez vos paramétres de connexion !';
+                        header('Location: login');
+                        exit;
+                    } else {
+                        session_start();
+                        $_SESSION['user'] = $users;
+                        header('Location: index');
+                        exit;
+                    }
                 } else {
                     echo('something wrong happend ! please contact an admin.');
                 }

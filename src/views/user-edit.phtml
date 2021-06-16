@@ -1,13 +1,23 @@
 <?php
     require_once(__DIR__ . './../controllers/user-edit.php');
+
+    ob_start();
+    $pageTitle = 'User edit';
+
     $idUser = $_GET['idUser'];
 ?>
-<form action="user-edit"<?php echo $idUser; ?> method="POST">
-    <input type="hidden" name="idUser" value=<?php echo $idUser; ?>>
-    <input type="text" name="pseudo" id="pseudo">
-    <input type="text" name="mail" id="mail">
-    <input type="text" name="password" id="password">
-    <input type="hidden" name="role" id="role" value=2>
-    <input type="submit" value="Subscribe !" name="submit">
-</form>
+<section id="subscribe-form" class="form my-5">
+    <form action="user-edit"<?php echo $idUser; ?> method="POST" class="d-flex f-col g-2 w25 m-auto">
+        <input type="hidden" name="idUser" value=<?php echo $idUser; ?>>
+        <input type="text" name="pseudo" id="pseudo">
+        <input type="text" name="mail" id="mail">
+        <input type="text" name="password" id="password">
+        <input type="hidden" name="role" id="role" value=2>
+        <input type="submit" value="Submit !" name="submit">
+    </form>
+</section>
+<?php
+    $content = ob_get_clean();
+    require_once('../src/views/template/layout.phtml'); 
+?>
 

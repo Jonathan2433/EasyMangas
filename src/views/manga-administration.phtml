@@ -1,15 +1,35 @@
 <?php
-    require_once(__DIR__ . './../controllers/manga_administration.php');
-    $pageTitle = "Manga Administration";
-    ob_start();
-    foreach ($getMangas as $manga) {
-        echo $manga['name'];
-    }
+require_once(__DIR__ . './../controllers/manga_administration.php');
+$pageTitle = "Manga Administration";
+ob_start();
 ?>
 
-    <h1>Manga Administration</h1>
-
+<h1 class="txt-center color-main">Manga Administration</h1>
+<a class="p-1 bg-dark color-light" href="new-manga">NEW MANGA</a>
+<section id="mangas-admin-grid" class="container grid g-2 mt-2 m-auto w-auto">
+    <?php foreach ($getMangas as $manga) { ?>
+        <article class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
+            <header class="manga-card-header my-2">
+                <img class="txt-center" src="#" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
+                <h3 class="manga-header-name color-dark txt-center"><?php echo $manga['name'] ?></h3>
+            </header>
+            <div class="manga-card-body txt-center d-flex f-col g-1">
+                <h4 class="manga-card-author color-dark">Author : <?php echo $manga['author'] ?></h4>
+                <h4 class="manga-card-editor color-dark">Editor : <?php echo $manga['editor'] ?></h4>
+                <h6 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
+                <p class="manga-card-resume color-dark">Resume : <?php echo $manga['resume'] ?></p>
+            </div>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <footer class="manga-card-footer d-flex x-flex-center mb-2">
+                    <a class="p-1 bg-dark color-light" 
+                    href="src/controllers/manga-administration?idMangaToDelete=<?php echo $manga['id'] ?>">Delete this manga</a>
+                    <a class="p-1 bg-dark color-light" href="manga-edit?idManga=<?php echo $manga['id'] ?>">Edit manga</a>
+                </footer>
+            <?php } ?>
+        </article>
+    <?php } ?>
+</section>
 <?php
-    $content = ob_get_clean();
-    require_once('template/layout.phtml');
+$content = ob_get_clean();
+require_once('template/layout.phtml');
 ?>

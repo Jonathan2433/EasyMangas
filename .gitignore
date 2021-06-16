@@ -8,3 +8,5 @@ assets/public/css/dist/header.min.css
 public/js/dist/scripts.min.js
 .gitignore
 assets/public/js/dist/scripts.min.js
+public/css/src/_header.scss
+public/js/src/index.js

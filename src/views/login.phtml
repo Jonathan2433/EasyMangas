@@ -2,14 +2,13 @@
 require_once(__DIR__ . '/../controllers/login.php');
 ob_start();
 ?>
-<section id="login-form" class="form">
-    <form action="login" method="POST">
+<section id="login-form" class="form my-5">
+    <form action="login" method="POST" class="d-flex f-col g-2 w25 m-auto">
         <input type="text" name="email" id="email" placeholder="Enter your E-mail" required>
         <input type="text" name="password" id="password" placeholder="Enter your Password" required>
         <input class="btn" class="submit" type="submit" value="Log-in" name="login">
-
-        <a class="btn" href="subscribe">You don't have account again ? Subscribe for free</a></p>
     </form>
+        <a class="d-block mt-2 m-auto btn txt-center" href="subscribe">You don't have account again ? Subscribe for free</a></p>
     <?php if (isset($errorMsg)) {
         echo $errorMsg;
     }
