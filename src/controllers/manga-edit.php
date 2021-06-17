@@ -37,11 +37,15 @@ if (isset($_POST['submit'])) {
             }
         }    
         if ($editManga === true) {
-            echo ('Manga edited !');
-            header('Location: index');
+            @session_start();
+            $_SESSION['msg'] = 'Manga edited !';
+            header('Location: manga-administration');
+            exit;
         } else {
-            echo ('something wrong happend ! please contact an admin.');
-            header('Location: index');
+            @session_start();
+            $_SESSION['msg'] = 'We failed to edit this manga ! Please try again, if the problem persist contact us.';
+            header('Location: manga-administration');
+            exit;
         }
     } else {
         echo $checkManga;

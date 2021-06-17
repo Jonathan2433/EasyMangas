@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once(__DIR__ . './../models/User.php');
 
 
@@ -24,21 +24,33 @@ if (isset($_POST['submit'])) {
             $role = $_POST['role'];
             //create new object Users with data from form parameters
             $user = new User($pseudo, $mail, $password, $role);
-            $checkUser = $user ->checkUser($mail, $pseudo);
+            $checkUser = $user->checkUser($mail, $pseudo);
 
             // create user only if check user dosnt return result from bdd
             if ($checkUser === true) {
                 $editUser = $user->editUser($idUser);
                 if ($editUser === true) {
-                    echo('user edited !');
+                    @session_start();
+                    $_SESSION['msg'] = 'User edited !';
+                    header('Location: user-administration');
+                    exit;
                 } else {
-                    echo('something wrong happend ! please contact an admin.');
-                }
-            }  else {
-                echo $checkUser;
+                    @session_start();
+                    $_SESSION['msg'] = 'We failed to edit this user ! Please try again, if the problem persist contact us.';
+                    header('Location: user-administration');
+                    exit;
+                        }
+            } else {
+                @session_start();
+                $_SESSION['msg'] = 'Edit failed, mail already exist !';
+                header('Location: user-administration');
+                exit;        
             }
         } else {
-            echo ('mail not valid');
+            @session_start();
+            $_SESSION['msg'] = 'Subscribe failed, this email is not valid !';
+            header('Location: user-administration');
+            exit;        
         }
     }
 }

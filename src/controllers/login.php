@@ -4,11 +4,12 @@ if (isset($_POST['login'])) {
     $users = new Users();
     $users = $users->getUserFromLogin(htmlentities($_POST['email'], ENT_QUOTES), htmlentities($_POST['password'], ENT_QUOTES));
     if ($users == false) {
-        return $errorMsg = 'Echec de connexion, veuillez vérifiez vos paramétres de connexion !';
+        @session_start();
+        $_SESSION['msg'] = 'Login failed, please check your connection settings !';
         header('Location: login');
         exit;
     } else {
-        session_start();
+        @session_start();
         $_SESSION['user'] = $users;
         header('Location: index');
         exit;

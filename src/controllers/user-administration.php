@@ -8,11 +8,15 @@ if (isset($_GET['idUserToDelete'])) {
     $idUser = $_GET['idUserToDelete'];
     $deleteUser = $users->deleteUser($idUser);
     if ($deleteUser) {
-        $msg = 'User deleted !';
-        ////////////////////////////ADD REROOT WHIT MSG ////////////////////
+        @session_start();
+        $_SESSION['msg'] = 'User deleted with success!';
+        header('Location: user-administration');
+        exit;
     } else {
-        $msg = 'User delete fail, please contact an admin.';
-                ////////////////////////////ADD REROOT WHIT MSG ////////////////////
+        @session_start();
+        $_SESSION['msg'] = 'We failed to delete this user, please try again ! if this problem persist please contact us.';
+        header('Location: user-administration');
+        exit;
     }
 }
 // if (isset($_GET['role'])) {
