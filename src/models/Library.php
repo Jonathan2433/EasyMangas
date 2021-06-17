@@ -7,19 +7,24 @@ class Library extends Connect
     public function __construct()
     {
     }
-    public function getLibrary()
+    public function getLibrary($userId)
     {
         try {
             $pdo = $this::getPdo();
             return $pdo->query("SELECT
-                    u.pseudo,
-                    l.name
+                    l.name,
+                    l.author,
+                    l.editor,
+                    l.tomes,
+                    l.id
                 FROM
                     library_users lu
                 JOIN 
                     users u ON lu.id_users = u.id
                 JOIN 
                     library l ON lu.id_mangas = l.id
+                WHERE
+                    id_users = $userId
             ");
         } catch (\PDOException $th) {
             return false;
@@ -38,6 +43,20 @@ class Library extends Connect
                         $userId, 
                         $mangaId
                         )
+            ");
+        } catch (\PDOException $th) {
+            return false;
+        }
+    }
+    public function deleteReading($userId, $mangaId)
+    {
+        try {
+            $pdo = $this::getPdo();
+            return $pdo->query("DELETE 
+                FROM 
+                    library_users
+                WHERE id_users = $userId
+                AND id_mangas = $mangaId
             ");
         } catch (\PDOException $th) {
             return false;

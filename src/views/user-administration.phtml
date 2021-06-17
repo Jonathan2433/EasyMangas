@@ -16,6 +16,7 @@ $pageTitle = 'User administration';
                 <h4 class="user-card-role color-dark">User role : <?php echo $user['name'] ?></h4>
             </div>
             <footer class="user-card-footer txt-center">
+                <a class="p-1 bg-dark color-light" href="src/controllers/user-administration?idUserToDelete=<?php echo $user['id'] ?>">Delete this user</a><br><br><br>
                 <a class="p-1 bg-dark color-light" href="user-edit?idUser=<?php echo $user['id'] ?>">Edit user</a>
             </footer>
         </article>

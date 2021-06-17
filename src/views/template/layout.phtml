@@ -2,7 +2,11 @@
 if (isset($_SESSION['user'])) {
     var_dump($_SESSION['user']);
 }
+if (isset($_SESSION['msg'])) {
+    var_dump($_SESSION['msg']);
+}
 
+require_once(__DIR__  . './../../controllers/access.php');
 
     include ('template-parts/header.phtml'); 
         echo ($content);

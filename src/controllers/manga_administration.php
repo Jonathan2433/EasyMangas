@@ -8,11 +8,15 @@ if (isset($_GET['idMangaToDelete'])) {
     $idManga = $_GET['idMangaToDelete'];
     $deleteManga = $mangas->deleteManga($idManga);
     if ($deleteManga) {
-        $msg = 'Manga deleted !';
-        ////////////////////////////ADD REROOT WHIT MSG ////////////////////
+        @session_start();
+        $_SESSION['msg'] = 'Manga deleted !';
+        header('Location: manga-administration');
+        exit;
     } else {
-        $msg = 'Manga delete fail, please contact an admin.';
-                ////////////////////////////ADD REROOT WHIT MSG ////////////////////
+        @session_start();
+        $_SESSION['msg'] = 'We fail to delete this manga ! Please try again, if this problem persist, contact us.';
+        header('Location: manga-administration');
+        exit;
     }
 }
 // if (isset($_GET['role'])) {

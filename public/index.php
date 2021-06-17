@@ -18,8 +18,10 @@ $pathView = '/../src/views/';
 $pathCtrl = '/../src/controllers/';
 
 $routes = [
-    '/'   => $pathView . 'index.phtml',
     'add-to-library'   => $pathCtrl . 'add-to-library.php',
+    'delete-to-library'   => $pathCtrl . 'delete-to-library.php',
+    'manga_administration'   => $pathCtrl . 'manga_administration.php',
+    '/'   => $pathView . 'index.phtml',
     'index'   => $pathView . 'index.phtml',
     'login'   => $pathView . 'login.phtml',
     'logout'   => $pathView . 'logout.phtml',
@@ -31,6 +33,7 @@ $routes = [
     'user-edit'    => $pathView . 'user-edit.phtml',
     'test-detailmanga'    => $pathView . 'test-detailmanga.phtml',
     'test-detailuser'    => $pathView . 'test-detailuser.phtml',
+    'library-user'    => $pathView . 'library-user.phtml',
     '/404'    => $pathView . '404.phtml',
 ];
 if ($currentUrl != '/') {

@@ -22,7 +22,7 @@ ob_start();
             <?php if (isset($_SESSION['user'])) { ?>
                 <footer class="manga-card-footer d-flex x-flex-center mb-2">
                     <a class="p-1 bg-dark color-light" 
-                    href="src/controllers/manga-administration?idMangaToDelete=<?php echo $manga['id'] ?>">Delete this manga</a>
+                    href="manga_administration?idMangaToDelete=<?php echo $manga['id'] ?>">Delete this manga</a>
                     <a class="p-1 bg-dark color-light" href="manga-edit?idManga=<?php echo $manga['id'] ?>">Edit manga</a>
                 </footer>
             <?php } ?>

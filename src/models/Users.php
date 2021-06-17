@@ -51,12 +51,16 @@ class Users extends User
 
             if (password_verify($password, $passwordHach)) {
                 $stmt = $pdo->prepare('SELECT
-                    id,
-                    pseudo,
-                    mail,
-                    id_role
+                    u.id,
+                    u.pseudo,
+                    u.mail,
+                    u.id_role,
+                    r.poid,
+                    r.name
                 FROM
-                    users 
+                    users  u
+                JOIN 
+                    roles r on u.id_role = r.id
                 WHERE
                     mail = :mail 
                 ');

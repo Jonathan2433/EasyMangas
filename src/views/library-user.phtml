@@ -1,8 +1,8 @@
 <?php
-require_once('../src/controllers/index.php');
+require_once('../src/controllers/library-user.php');
 ob_start();
-$pageTitle = 'Home';
-if (isset($_SESSION['user']['id'])) {
+$pageTitle = 'My library';
+if (isset($_SESSION['user'])) {
     $userId = $_SESSION['user']['id'];
 }
 if (isset($_SESSION['msg'])) {
@@ -18,17 +18,14 @@ if (isset($_SESSION['msg'])) {
                 <img class="txt-center" src="#" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
                 <h3 class="manga-header-name color-dark txt-center"><?php echo $manga['name'] ?></h3>
             </header>
-            <div class="manga-card-body txt-center d-flex f-col g-1">
+            <div class="manga-card-body txt-center d-flex f-col g-1 my-1">
                 <h4 class="manga-card-author color-dark">Author : <?php echo $manga['author'] ?></h4>
                 <h4 class="manga-card-editor color-dark">Editor : <?php echo $manga['editor'] ?></h4>
                 <h6 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
-                <p class="manga-card-resume color-dark">Resume : <?php echo $manga['resume'] ?></p>
             </div>
-            <?php if (isset($_SESSION['user'])) { ?>
-                <footer class="manga-card-footer d-flex x-flex-center mb-2">
-                    <a class="p-1 bg-dark color-light" href="add-to-library?mangaId=<?php echo $manga['id'] ?>">Add to my reading</a>
-                </footer>
-            <?php } ?>
+            <footer class="manga-card-footer d-flex x-flex-center mb-2">
+                <a class="p-1 bg-dark color-light" href="delete-to-library?mangaId=<?php echo $manga['id'] ?>">Delete of my library</a>
+            </footer>
         </article>
     <?php } ?>
 </section>

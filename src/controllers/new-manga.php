@@ -33,11 +33,15 @@ if (isset($_POST['submit'])) {
         // create manga in bdd
         $createManga = $manga->createManga();
         if ($createManga === true) {
-            echo ('manga added !');
-            header('Location: index');
+            @session_start();
+            $_SESSION['msg'] = 'Manga added !';
+            header('Location: manga-administration');
+            exit;
         } else {
-            echo ('something wrong happend ! please contact an admin.');
-            header('Location: index');
+            @session_start();
+            $_SESSION['msg'] = 'We fail to add this manga ! Please try again, if the problem persist contact us.';
+            header('Location: manga-administration');
+            exit;
         }
     } else {
         echo $checkManga;

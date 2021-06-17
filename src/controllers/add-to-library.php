@@ -1,22 +1,24 @@
 <?php
-$userId = $_GET['userId'];
+$userId = $_SESSION['user']['id'];
 require_once(__DIR__ . './../models/Library.php');
 $addLibrary = new Library();
 
 
-if (isset($_GET['userId'], $_GET['mangaId'])) {
+if (isset($userId, $_GET['mangaId'])) {
     $mangaId = $_GET['mangaId'];
 
     $addLibrary->addReading($userId, $mangaId);
 
     if ($addLibrary) {
-        ////////////////////////////TODO ADD AJAX OR REROOT + MSG ADDING OK /////////////////////
-        echo 'OK POTO  bien ajouter';
+        @session_start();
+        $_SESSION['msg'] = 'Manga added to your library with success!';
         header('Location: index');
+        exit;
     } else {
-        ///////////////////////TODO ADD ERROR MSG + REROOT ////////////////////////////////////
-        echo 'NOPE MON BRO';
+        @session_start();
+        $_SESSION['msg'] = 'We failed to add this manga in your library, please try again ! if this problem persist please contact us.';
         header('Location: index');
+        exit;
     }
 }
 
