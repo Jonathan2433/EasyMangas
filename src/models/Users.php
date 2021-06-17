@@ -76,4 +76,18 @@ class Users extends User
             return false;
         }
     }
+    public function deleteUser($idUser)
+    {
+        try {
+            $pdo = $this::getPdo();
+            return $pdo->query("DELETE 
+                FROM 
+                    users
+                WHERE id = $idUser
+            ");
+        } catch (\PDOException $th) {
+            return false;
+        }
+
+    }
 }

@@ -21,6 +21,7 @@ $routes = [
     'add-to-library'   => $pathCtrl . 'add-to-library.php',
     'delete-to-library'   => $pathCtrl . 'delete-to-library.php',
     'manga_administration'   => $pathCtrl . 'manga_administration.php',
+    'user-administration'   => $pathCtrl . 'user-administration.php',
     '/'   => $pathView . 'index.phtml',
     'index'   => $pathView . 'index.phtml',
     'login'   => $pathView . 'login.phtml',
