@@ -16,7 +16,9 @@ class Library extends Connect
                     l.author,
                     l.editor,
                     l.tomes,
-                    l.id
+                    l.img,
+                    l.id,
+                    lu.tomes_read
                 FROM
                     library_users lu
                 JOIN 

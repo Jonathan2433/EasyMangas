@@ -15,7 +15,7 @@ if (isset($_SESSION['msg'])) {
     foreach ($mangas as $manga) { ?>
         <article id="manga-card-<?php echo $manga['id'] ?>"class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
             <header class="manga-card-header my-2">
-                <img class="txt-center" src="#" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
+                <img class="txt-center w100" src="./img/dist/<?php echo $manga['img'] ?>" alt="<?php echo 'preview of : ' . $manga['name'] ?>">
                 <h3 class="manga-header-name color-dark txt-center"><?php echo $manga['name'] ?></h3>
             </header>
             <div class="manga-card-body txt-center d-flex f-col g-1">

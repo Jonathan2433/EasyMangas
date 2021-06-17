@@ -15,13 +15,14 @@ if (isset($_SESSION['msg'])) {
     foreach ($mangas as $manga) { ?>
         <article id="manga-card-<?php echo $manga['id'] ?>"class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
             <header class="manga-card-header my-2">
-                <img class="txt-center" src="#" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
+                <img class="txt-center w100" src="./img/dist/<?php echo $manga['img'] ?>" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
                 <h3 class="manga-header-name color-dark txt-center"><?php echo $manga['name'] ?></h3>
             </header>
             <div class="manga-card-body txt-center d-flex f-col g-1 my-1">
                 <h4 class="manga-card-author color-dark">Author : <?php echo $manga['author'] ?></h4>
                 <h4 class="manga-card-editor color-dark">Editor : <?php echo $manga['editor'] ?></h4>
                 <h6 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
+                <p class="manga-card-tomes-read color-dark">You read the : <?php echo $manga['tomes_read'] ?> first tomes !</p>
             </div>
             <footer class="manga-card-footer d-flex x-flex-center mb-2">
                 <a class="p-1 bg-dark color-light" href="delete-to-library?mangaId=<?php echo $manga['id'] ?>">Delete of my library</a>
