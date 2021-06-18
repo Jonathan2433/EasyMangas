@@ -99,23 +99,6 @@ class Manga extends Connect
         $stmt->bindParam(':id', $idManga);
         return $stmt->execute();
     }
-    public function detailManga($idManga)
-    {
-        $pdo = $this::getPdo();
-        return $pdo->query("SELECT
-            name,
-            author,
-            editor,
-            name,
-            tomes,
-            img,
-            resume
-        FROM
-        library 
-        WHERE
-            id = $idManga
-        ");
-    }
     public function editManga($idManga)
     {
         try {

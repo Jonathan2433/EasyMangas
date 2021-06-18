@@ -6,13 +6,14 @@
     $idManga = $_GET['idManga'];
 ?>
 <section id="manga-edit-form" class="form my-5">
-    <form action="manga-edit"<?php echo $idManga; ?> method="POST" enctype="multipart/form-data" class="d-flex f-col g-2 w25 m-auto">
+    <form action="manga-edit?idManga=<?php echo $idManga; ?>
+    " method="POST" enctype="multipart/form-data" class="d-flex f-col g-2 w25 m-auto">
         <input type="hidden" name="idManga" value=<?php echo $idManga; ?>>
-        <input type="text" name="name" id="name" placeholder="Name of manga">
-        <input type="text" name="author" id="author" placeholder="Author of manga">
-        <input type="text" name="editor" id="editor" placeholder="Editor of manga">
-        <input type="number" name="tomes" id="tomes" placeholder="Tome's number of manga">
-        <input type="text" name="resume" id="resume" placeholder="Resume of manga">
+        <input type="text" name="name" id="name" value="<?php echo $mangaPlaceholder['name'] ?>">
+        <input type="text" name="author" id="author" value="<?php echo $mangaPlaceholder['author'] ?>">
+        <input type="text" name="editor" id="editor" value="<?php echo $mangaPlaceholder['editor'] ?>">
+        <input type="number" name="tomes" id="tomes" value="<?php echo $mangaPlaceholder['tomes'] ?>">
+        <input type="text" name="resume" id="resume" value="<?php echo $mangaPlaceholder['resume'] ?>">
         <input type="file" id="img" name="img">
         <input type="submit" value="Submit !" name="submit">
     </form>

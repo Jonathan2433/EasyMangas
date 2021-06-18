@@ -28,4 +28,21 @@ class Mangas extends Manga
             return false;
         }
     }
+    public function detailManga($idManga)
+    {
+        $pdo = $this::getPdo();
+        return $pdo->query("SELECT
+            name,
+            author,
+            editor,
+            name,
+            tomes,
+            img,
+            resume
+        FROM
+        library 
+        WHERE
+            id = $idManga
+        ");
+    }
 }
