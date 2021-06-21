@@ -6,6 +6,7 @@
     $idManga = $_GET['idManga'];
 ?>
 <section id="manga-edit-form" class="form my-5">
+    <img class="txt-center w25" src="./img/dist/<?php echo $mangaPlaceholder['img'] ?>" alt="<?php echo 'preview of : ' . $mangaPlaceholder['name'] ?>">
     <form action="manga-edit?idManga=<?php echo $idManga; ?>
     " method="POST" enctype="multipart/form-data" class="d-flex f-col g-2 w25 m-auto">
         <input type="hidden" name="idManga" value=<?php echo $idManga; ?>>

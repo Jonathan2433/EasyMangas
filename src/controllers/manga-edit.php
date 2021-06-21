@@ -8,17 +8,24 @@ $mangaPlaceholder = $mangaPlaceholder->fetch();
 
 function editManga($manga, $mangaValues)
 {
-    var_dump($mangaValues, $_FILES);die;
+    $mangaPlaceholder = new Mangas($_GET['idManga']);
+    $mangaPlaceholder = $mangaPlaceholder->detailManga($_GET['idManga']);
+    $mangaPlaceholder = $mangaPlaceholder->fetch();
+
+    var_dump($_FILES['img']);
+    var_dump($mangaPlaceholder['img']);
+    var_dump($mangaValues['img']);
+
     $editManga = $manga->editManga($mangaValues['id']);
 
     if ($_FILES['img']['name'] != '') {
-        move_uploaded_file($_FILES['img']['tmp_name'], __DIR__ . ' ./../../public/img/dist/' . $mangaValues['img']);
-        if ($manga['img'] != 'default.jpg') {
+        move_uploaded_file($_FILES['img']['tmp_name'], './../public/img/dist/' . $mangaValues['img']);
+        if ($mangaValues['img'] != 'default.jpg') {
             /**
              * unlink permet de supprimer un fichier
              * Nous supprimons l'ancienne image si ce n'est pas default.jpg
              */
-            unlink(__DIR__ . ' ./../../public/img/dist/' . $manga['img']);
+            unlink('./../public/img/dist/' . $mangaPlaceholder['img']);
         }
     }
     if ($editManga === true) {
@@ -62,8 +69,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['msg'] = 'Manga already exist !';
             header('Location: manga-edit?idManga=' . $mangaValues['id'] . '');
             exit;
-            }
-    } 
+        }
+    }
     editManga($manga, $mangaValues);
 }
-

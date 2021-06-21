@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     if ($checkManga === true) {
         // move the img file in good folder
         if ($_FILES['img']['name'] != '') {
-            move_uploaded_file($_FILES['img']['tmp_name'], './../../public/img/dist/' . $mangaValues['img']);
+            move_uploaded_file($_FILES['img']['tmp_name'], './../public/img/dist/' . $mangaValues['img']);
         }
         // create manga in bdd
         $createManga = $manga->createManga();

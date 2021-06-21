@@ -7,7 +7,7 @@ class Manga extends Connect
     protected $author;
     protected $editor;
     protected $tomes;
-    protected $img;
+    public $img;
 
     public function __construct($name, $author, $editor, $tomes, $img, $resume)
     {
