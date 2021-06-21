@@ -1,13 +1,15 @@
 <?php
 $userId = $_SESSION['user']['id'];
+var_dump($userId);
 require_once(__DIR__ . './../models/Library.php');
+
 $addLibrary = new Library();
 
 
 if (isset($userId, $_GET['mangaId'])) {
     $mangaId = $_GET['mangaId'];
-
-    $addLibrary->addReading($userId, $mangaId);
+    $tomesRead = 1;
+    $addLibrary->addReading($userId, $mangaId, $tomesRead);
 
     if ($addLibrary) {
         @session_start();

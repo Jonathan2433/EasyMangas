@@ -32,18 +32,20 @@ class Library extends Connect
             return false;
         }
     }
-    public function addReading($userId, $mangaId)
+    public function addReading($userId, $mangaId, $tomesRead)
     {
         try {
             $pdo = $this::getPdo();
-            return $pdo->query("INSERT 
+             $pdo->query("INSERT 
                     INTO 
                     library_users(
                         `id_users`, 
-                        `id_mangas`) 
+                        `id_mangas`,
+                        `tomes_read`) 
                     VALUES (
                         $userId, 
-                        $mangaId
+                        $mangaId,
+                        $tomesRead
                         )
             ");
         } catch (\PDOException $th) {

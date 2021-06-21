@@ -13,7 +13,7 @@ if (isset($_SESSION['msg'])) {
 <section id="mangas-grid" class="container grid g-2 mt-2 m-auto w-auto">
     <?php
     foreach ($mangas as $manga) { ?>
-        <article id="manga-card-<?php echo $manga['id'] ?>"class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
+        <article id="manga-card-<?php echo $manga['id'] ?>" class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
             <header class="manga-card-header my-2">
                 <img class="txt-center w100" src="./img/dist/<?php echo $manga['img'] ?>" alt="<?php echo 'preview of : ' . $manga['name'] ?>">
                 <h3 class="manga-header-name color-dark txt-center"><?php echo $manga['name'] ?></h3>
@@ -26,11 +26,23 @@ if (isset($_SESSION['msg'])) {
             </div>
             <?php if (isset($_SESSION['user'])) { ?>
                 <footer class="manga-card-footer d-flex x-flex-center mb-2">
-                    <a class="p-1 bg-dark color-light" href="add-to-library?mangaId=<?php echo $manga['id'] ?>">Add to my reading</a>
+                    <button class="myBtn p-1 bg-dark color-light" data-id="<?php echo $manga['id'] ?>" data-name="<?php echo $manga['name'] ?>">Add to my reading</button>
                 </footer>
             <?php } ?>
         </article>
     <?php } ?>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close"></span>
+            <p class="modal-text">Do you really want to <span class="bigger"> Add</span> :</p>
+            <h2 class="txt-center modal-manga-name" id="modal-manga-name"></h2>
+            <p class="txt-center"> to your library ?</p>
+            <div class="my-2 txt-center " id="modal-btn-add">
+            </div>
+        </div>
+    </div>
+
 </section>
 <?php
 $content = ob_get_clean();

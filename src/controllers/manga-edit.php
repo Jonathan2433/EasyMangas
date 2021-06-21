@@ -8,7 +8,7 @@ $mangaPlaceholder = $mangaPlaceholder->fetch();
 
 function editManga($manga, $mangaValues)
 {
-
+    var_dump($mangaValues, $_FILES);die;
     $editManga = $manga->editManga($mangaValues['id']);
 
     if ($_FILES['img']['name'] != '') {
