@@ -1,9 +1,9 @@
 <?php
-    require_once(__DIR__ . './../controllers/manga-edit.php');
-    ob_start();
-    $pageTitle = 'Manga edit';
+require_once(__DIR__ . './../controllers/manga-edit.php');
+ob_start();
+$pageTitle = 'Manga edit';
 
-    $idManga = $_GET['idManga'];
+$idManga = $_GET['idManga'];
 ?>
 <section id="manga-edit-form" class="form my-5">
     <img class="txt-center w25" src="./img/dist/<?php echo $mangaPlaceholder['img'] ?>" alt="<?php echo 'preview of : ' . $mangaPlaceholder['name'] ?>">
@@ -20,7 +20,6 @@
     </form>
 </section>
 <?php
-    $content = ob_get_clean();
-    require_once('../src/views/template/layout.phtml'); 
+$content = ob_get_clean();
+require_once('../src/views/template/layout.phtml');
 ?>
-

@@ -66,6 +66,30 @@ class Library extends Connect
             return false;
         }
     }
+    public function checkLibrary($userId,$mangaId)
+    {
+        try {
+            $pdo = $this::getPdo();
+            $manga = $pdo->query("SELECT
+                    l.id,
+                    u.id
+                FROM
+                    library_users lu
+                JOIN 
+                    users u ON lu.id_users = u.id
+                JOIN 
+                    library l ON lu.id_mangas = l.id
+                WHERE
+                    id_users = $userId AND id_mangas = $mangaId
+            ");
+            if ($manga->rowCount() >= 1) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (\PDOException $th) {
+            return false;
+        }
+
+    }
 }
-
-
