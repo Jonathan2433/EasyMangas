@@ -40,7 +40,6 @@ $routes = [
 if ($currentUrl != '/') {
     $currentUrl = basename($currentUrl);
 }
-var_dump($currentUrl);
 if (!isset($routes[$currentUrl])) {
     $currentUrl = '/404';
 }

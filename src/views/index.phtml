@@ -1,28 +1,35 @@
 <?php
-require_once('../src/controllers/index.php');
-ob_start();
-$pageTitle = 'Home';
-if (isset($_SESSION['user']['id'])) {
-    $userId = $_SESSION['user']['id'];
-}
-if (isset($_SESSION['msg'])) {
-    $msg = $_SESSION['msg'];
-}
+    require_once('../src/controllers/index.php');
+    ob_start();
+
+    $pageTitle = 'Home';
+    
+    if (isset($_SESSION['user']['id'])) {
+        $userId = $_SESSION['user']['id'];
+    }
+    if (isset($_SESSION['msg'])) {
+        $msg = $_SESSION['msg'];
+    }
+?>
+<?php 
+    if (isset($msg)) { ?>
+        <h3 class="title txt-center my-2 color-main"><?php echo $msg ?></h3>
+    <?php } 
 ?>
 <h1 class="txt-center color-main">Easy Mangas</h1>
-<section id="mangas-grid" class="container grid g-2 mt-2 m-auto w-auto">
+<section id="mangas-grid" class="container grid g-2 m-3 m-auto w-auto">
     <?php
     foreach ($mangas as $manga) { ?>
         <article id="manga-card-<?php echo $manga['id'] ?>" class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
             <header class="manga-card-header my-2">
                 <img class="txt-center w100" src="./img/dist/<?php echo $manga['img'] ?>" alt="<?php echo 'preview of : ' . $manga['name'] ?>">
-                <h3 class="manga-header-name color-dark txt-center"><?php echo $manga['name'] ?></h3>
+                <h3 class="manga-header-name color-dark txt-center my-2"><?php echo $manga['name'] ?></h3>
             </header>
             <div class="manga-card-body txt-center d-flex f-col g-1">
                 <h4 class="manga-card-author color-dark">Author : <?php echo $manga['author'] ?></h4>
                 <h4 class="manga-card-editor color-dark">Editor : <?php echo $manga['editor'] ?></h4>
                 <h6 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
-                <p class="manga-card-resume color-dark">Resume : <?php echo $manga['resume'] ?></p>
+                <p class="manga-card-resume color-dark">Short resume : <?php echo $manga['resume'] ?></p>
             </div>
             <?php if (isset($_SESSION['user'])) { ?>
                 <footer class="manga-card-footer d-flex x-flex-center mb-2">

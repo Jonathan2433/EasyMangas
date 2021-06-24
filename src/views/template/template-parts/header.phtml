@@ -6,13 +6,14 @@
         $idUser = $_SESSION['user']['id'];
     } else {
         $_SESSION['user']['poid'] = 0;
+        $_SESSION['user']['pseudo'] = '';
     }
 ?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta e="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyManga | <?php echo $pageTitle ?>
     </title>
     <link rel="stylesheet" href="./css/dist/style.min.css">
@@ -61,5 +62,9 @@
             <?php } ?>
         </nav>
     </header>
+<?php 
+    if (isset($_SESSION['user'])) { ?>
+        <h2 class="title txt-center my-2 color-main">Hello <?php echo $_SESSION['user']['pseudo'] ?></h2>
+<?php } ?>
 
 

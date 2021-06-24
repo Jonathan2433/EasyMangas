@@ -1,6 +1,5 @@
 <?php
 $userId = $_SESSION['user']['id'];
-var_dump($userId);
 require_once(__DIR__ . './../models/Library.php');
 
 $addLibrary = new Library();

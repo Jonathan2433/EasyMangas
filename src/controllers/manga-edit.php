@@ -12,9 +12,6 @@ function editManga($manga, $mangaValues)
     $mangaPlaceholder = $mangaPlaceholder->detailManga($_GET['idManga']);
     $mangaPlaceholder = $mangaPlaceholder->fetch();
 
-    var_dump($_FILES['img']);
-    var_dump($mangaPlaceholder['img']);
-    var_dump($mangaValues['img']);
 
     $editManga = $manga->editManga($mangaValues['id']);
 

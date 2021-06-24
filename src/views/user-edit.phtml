@@ -1,10 +1,19 @@
 <?php
     require_once(__DIR__ . './../controllers/user-edit.php');
-
     ob_start();
+    
     $pageTitle = 'User edit';
 
     $idUser = $_GET['idUser'];
+
+    if (isset($_SESSION['msg'])) {
+        $msg = $_SESSION['msg'];
+    }    
+?>
+<?php 
+    if (isset($msg)) { ?>
+        <h3 class="title txt-center my-2 color-main"><?php echo $msg ?></h3>
+    <?php } 
 ?>
 <section id="subscribe-form" class="form my-5">
     <form action="user-edit"<?php echo $idUser; ?> method="POST" class="d-flex f-col g-2 w25 m-auto">

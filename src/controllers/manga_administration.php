@@ -19,10 +19,3 @@ if (isset($_GET['idMangaToDelete'])) {
         exit;
     }
 }
-// if (isset($_GET['role'])) {
-//     $users = getUsersFromForm($_GET['role']);
-//     $msgFilter = ('Filter by Role : ' . $_GET['role']);
-//     if ($_GET['role'] == '*') {
-//         $users = getUsers();
-//     }
-// }

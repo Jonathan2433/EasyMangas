@@ -15,7 +15,6 @@ if (isset($_SERVER['REDIRECT_URL'])) {
     $phpSelf = $_SERVER['REQUEST_URI'];
 }
 
-var_dump($phpSelf);
 //phpself = /easymanga/index
 /**
  * Afin de récupérer le nom du fichier nous utilisons basename pour remonter la composante 
