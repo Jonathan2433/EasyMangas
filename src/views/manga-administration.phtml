@@ -3,16 +3,8 @@
     $pageTitle = "Manga Administration";
     
     ob_start();
+?>
 
-    if (isset($_SESSION['msg'])) {
-        $msg = $_SESSION['msg'];
-    }
-?>
-<?php 
-    if (isset($msg)) { ?>
-        <h3 class="title txt-center my-2 color-main"><?php echo $msg ?></h3>
-    <?php } 
-?>
 <h1 class="txt-center color-main my-2">Manga Administration</h1>
 <a class="p-1 bg-light color-dark txt-center d-block w25 m-auto" href="new-manga">NEW MANGA</a>
 <section id="mangas-admin-grid" class="container grid g-2 mt-2 m-auto w-auto">

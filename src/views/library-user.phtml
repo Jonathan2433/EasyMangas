@@ -3,19 +3,8 @@
     ob_start();
 
     $pageTitle = 'My library';
-    
-    if (isset($_SESSION['user'])) {
-        $userId = $_SESSION['user']['id'];
-    }
-    if (isset($_SESSION['msg'])) {
-        $msg = $_SESSION['msg'];
-    }
 ?>
-<?php 
-    if (isset($msg)) { ?>
-        <h3 class="title txt-center my-2 color-main"><?php echo $msg ?></h3>
-    <?php } 
-?>
+
 <h1 class="txt-center color-main">Easy Mangas</h1>
 <section id="mangas-grid" class="container grid g-2 mt-2 m-auto w-auto">
     <?php

@@ -3,16 +3,8 @@
     ob_start();
     
     $pageTitle = 'User administration';
+?>
 
-    if (isset($_SESSION['msg'])) {
-        $msg = $_SESSION['msg'];
-    }
-?>
-<?php 
-    if (isset($msg)) { ?>
-        <h3 class="title txt-center my-2 color-main"><?php echo $msg ?></h3>
-    <?php } 
-?>
 <h1 class="txt-center color-main">Users Administration</h1>
 <section id="users-admin-grid" class="container grid g-2 mt-2 m-auto w-auto">
     <?php foreach ($getUsers as $user) { ?>

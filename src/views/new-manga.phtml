@@ -3,16 +3,8 @@
     ob_start();
     
     $pageTitle = 'New manga';
-    
-    if (isset($_SESSION['msg'])) {
-        $msg = $_SESSION['msg'];
-    }
 ?>
-<?php 
-    if (isset($msg)) { ?>
-        <h3 class="title txt-center my-2 color-main"><?php echo $msg ?></h3>
-    <?php } 
-?>
+
 <section id="subscribe-form" class="form my-5">
     <form action="new-manga" method="POST" enctype="multipart/form-data" class="d-flex f-col g-2 w25 m-auto">
         <input type="text" name="name" id="name" placeholder="Name of manga">

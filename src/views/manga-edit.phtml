@@ -5,15 +5,8 @@
     $pageTitle = 'Manga edit';
 
     $idManga = $_GET['idManga'];
-    if (isset($_SESSION['msg'])) {
-        $msg = $_SESSION['msg'];
-    }
 ?>
-<?php 
-    if (isset($msg)) { ?>
-        <h3 class="title txt-center my-2 color-main"><?php echo $msg ?></h3>
-    <?php } 
-?>
+
 <section id="manga-edit-form" class="form my-5">
     <img class="txt-center w25" src="./img/dist/<?php echo $mangaPlaceholder['img'] ?>" alt="<?php echo 'preview of : ' . $mangaPlaceholder['name'] ?>">
     <form action="manga-edit?idManga=<?php echo $idManga; ?>
