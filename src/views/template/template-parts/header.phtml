@@ -67,8 +67,8 @@
     </header>
 <?php 
     if (isset($_SESSION['user'])) { ?>
-        <h2 class="title txt-center my-2 color-main">Hello <?php echo $_SESSION['user']['pseudo'] ?></h2>
+        <h2 class="title txt-center my-2 color-light">Hello <?php echo $_SESSION['user']['pseudo'] ?></h2>
 <?php }
     if (isset($msg)) { ?>
-        <h3 class="title txt-center my-2 color-main"><?php echo $msg; unset($_SESSION['msg']) ?></h3>
+        <h3 class="title txt-center my-2 color-light"><?php echo $msg; unset($_SESSION['msg']) ?></h3>
 <?php } ?>

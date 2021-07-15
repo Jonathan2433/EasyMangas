@@ -1,0 +1,21 @@
+section.container {
+    article.manga-card {
+        max-height: 550px;
+        header.manga-card-header {
+            img {
+                max-height: 200px;
+            }
+        }
+        footer.manga-card-footer  {
+            a {
+                cursor: pointer;
+                &:hover {
+                    background: #00162c;
+                    color: #ff7b77;
+                    transform: translate(0px, -5px);
+                    box-shadow: 5px 5px 5px#ff7b77;
+                }
+            }
+        }
+    }
+}

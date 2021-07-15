@@ -5,12 +5,12 @@
     $pageTitle = 'Home';
 ?>
 
-<h1 class="txt-center color-main">Easy Mangas</h1>
-<section id="mangas-grid" class="container grid g-2 m-3 m-auto w-auto">
+<h1 class="txt-center color-light my-3">Easy Mangas</h1>
+<section id="mangas-grid" class="container grid g-2 m-auto w-auto">
     <?php
     foreach ($mangas as $manga) { ?>
-        <article id="manga-card-<?php echo $manga['id'] ?>" class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
-            <header class="manga-card-header my-2">
+        <article id="manga-card-<?php echo $manga['id'] ?>" class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-1">
+            <header class="manga-card-header my-1">
                 <img class="txt-center w100" src="./img/dist/<?php echo $manga['img'] ?>" alt="<?php echo 'preview of : ' . $manga['name'] ?>">
                 <h3 class="manga-header-name color-dark txt-center my-2"><?php echo $manga['name'] ?></h3>
             </header>
@@ -22,7 +22,7 @@
             </div>
             <?php if (isset($_SESSION['user'])) { ?>
                 <footer class="manga-card-footer d-flex x-flex-center mb-2">
-                    <button class="myBtn p-1 bg-dark color-light" data-id="<?php echo $manga['id'] ?>" data-name="<?php echo $manga['name'] ?>">Add to my reading</button>
+                    <a class="myBtn p-1 bg-dark color-light" data-id="<?php echo $manga['id'] ?>" data-name="<?php echo $manga['name'] ?>">Add to my reading</a>
                 </footer>
             <?php } ?>
         </article>

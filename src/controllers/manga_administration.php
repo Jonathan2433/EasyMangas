@@ -4,6 +4,7 @@ require_once(__DIR__ . './../models/Mangas.php');
 $mangas = new Mangas();
 
 $getMangas = $mangas->getMangas();
+
 if (isset($_GET['idMangaToDelete'])) {
     $idManga = $_GET['idMangaToDelete'];
     $deleteManga = $mangas->deleteManga($idManga);

@@ -2,10 +2,7 @@
 session_start();
 
 require_once('../autoload.php');
-// require_once('../src/controllers/acl.php');
 
-// define('DIR_CTRL', __DIR__ . '/src/controllers');
-// define('LAYOUT', __DIR__ . '/src/views/template/layout.phtml'); obsolete car use autoload
 if (isset($_SERVER['REDIRECT_URL'])) {
     $currentUrl = $_SERVER['REDIRECT_URL'];
 } else {

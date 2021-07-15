@@ -59,7 +59,6 @@ class User extends Connect
             return false;
         }
     }
-
     public function createUser()
     {
         try {

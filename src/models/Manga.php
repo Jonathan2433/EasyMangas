@@ -54,7 +54,7 @@ class Manga extends Connect
                 name = '$this->_name'
             ");
             if ($name->rowCount() >= 1) {
-                return $msg = 'Manga already register';
+                return false;
             } else {
                 return true;
             }
