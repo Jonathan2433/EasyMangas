@@ -23,6 +23,14 @@
             <footer class="manga-card-footer d-flex x-flex-center mb-2">
                 <a class="p-1 bg-dark color-light" href="delete-to-library?mangaId=<?php echo $manga['id'] ?>">Delete of my library</a>
             </footer>
+            <div class="input-tomes">
+                <h4 class="txt-center my-1 color-dark">change tome numbers read :</h4>
+                <form action="library-user" method="POST" class="d-flex g-1">
+                    <input type="number" class="d-block w-25 m-auto" value="<?php echo $manga['tomes_read'] ?>" name="user-tomes-read">
+                    <input type="hidden" name="id-manga" value="<?php echo $manga['id'] ?>">
+                    <input type="submit" value="submit" class="d-block w-75 m-auto" name="submit">
+                </form>
+            </div>
         </article>
     <?php } ?>
 </section>

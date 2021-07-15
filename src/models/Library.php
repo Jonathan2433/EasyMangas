@@ -90,6 +90,29 @@ class Library extends Connect
         } catch (\PDOException $th) {
             return false;
         }
+    }
+    public function editTome($mangaId, $userId, $userTomesRead)
+    {
+        try {
+            $pdo = $this::getPdo();
+            
+            $editUserTomesRead = $pdo->prepare("UPDATE 
+                    `library_users` 
+                SET 
+                    `tomes_read`= :tomes_read 
+                WHERE 
+                    `id_users`= :id_users 
+                AND 
+                    `id_mangas`= :id_mangas
+            ");
+            $editUserTomesRead->bindParam(':tomes_read', $userTomesRead);
+            $editUserTomesRead->bindParam(':id_users', $userId);
+            $editUserTomesRead->bindParam(':id_mangas', $mangaId);
 
+            return $editUserTomesRead->execute();
+
+        } catch (\PDOException $th) {
+            return false;
+        }
     }
 }
