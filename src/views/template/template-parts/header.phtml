@@ -29,18 +29,18 @@
 <body class="bg-dark">
     <header id="main-header" class="d-flex f-row x-flex-between bg-light">
         <a id="main-logo" href="index"><img class="w25 m-1" src="./img/dist/default.jpg" alt="Logo Easy Mangas"></a>
-        <nav class="d-flex f-row g-1 p-2">
+        <nav class="header-nav d-flex f-row g-1 p-2">
             <?php 
                 if (basename($_SERVER['REQUEST_URI']) != 'index') { ?>
-                    <a class="p-1 bg-dark color-light txt-center" href="index">INDEX</a>
+                    <a class="header-nav-link p-1 bg-dark color-light txt-center" href="index">INDEX</a>
             <?php } ?>
             <?php 
                 if (isset($_SESSION['user']['id']) && basename($_SERVER['REQUEST_URI']) != 'library-user') { ?>
-                    <a class="p-1 bg-dark color-light txt-center" href="library-user">MY LIBRARY</a>
+                    <a class="header-nav-link p-1 bg-dark color-light txt-center" href="library-user">MY LIBRARY</a>
             <?php } ?>
             <?php 
                 if (isset($_SESSION['user']['id']) && basename($_SERVER['REQUEST_URI']) != 'manga-administration' && $_SESSION['user']['poid'] >= 50) { ?>
-                    <a class="p-1 bg-dark color-light txt-center" href="manga-administration">MANGA-ADMIN</a>
+                    <a class="header-nav-link p-1 bg-dark color-light txt-center" href="manga-administration">MANGA-ADMIN</a>
             <?php } ?>
 
             <!-- <?php 
@@ -49,19 +49,19 @@
             <?php } ?> -->
             <?php 
                 if (isset($_SESSION['user']['id']) && basename($_SERVER['REQUEST_URI']) != 'user-administration' && $_SESSION['user']['poid'] > 50) { ?>
-                    <a class="p-1 bg-dark color-light txt-center" href="user-administration">USER-ADMIN</a>
+                    <a class="header-nav-link p-1 bg-dark color-light txt-center" href="user-administration">USER-ADMIN</a>
             <?php } ?>
             <?php 
                 if (!isset($_SESSION['user']['id']) && basename($_SERVER['REQUEST_URI']) != 'subscribe') { ?>
-                    <a class="p-1 bg-dark color-light txt-center" href="subscribe">SUBSCRIBE</a>
+                    <a class="header-nav-link p-1 bg-dark color-light txt-center" href="subscribe">SUBSCRIBE</a>
             <?php } ?>
             <?php 
                 if (!isset($_SESSION['user']['id']) && basename($_SERVER['REQUEST_URI']) != 'login') { ?>
-                    <a class="p-1 bg-dark color-light txt-center" href="login">LOGIN</a>
+                    <a class="header-nav-link p-1 bg-dark color-light txt-center" href="login">LOGIN</a>
             <?php } ?>
             <?php 
                 if (isset($_SESSION['user']['id'])) { ?>
-                    <a class="p-1 bg-dark color-light txt-center" href="logout">LOGOUT</a>
+                    <a class="header-nav-link p-1 bg-dark color-light txt-center" href="logout">LOGOUT</a>
             <?php } ?>
         </nav>
     </header>
@@ -72,3 +72,4 @@
     if (isset($msg)) { ?>
         <h3 class="title txt-center my-2 color-light"><?php echo $msg; unset($_SESSION['msg']) ?></h3>
 <?php } ?>
+<main>
