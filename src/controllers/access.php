@@ -36,6 +36,7 @@ $tabPageAdmin = [
     'user-administration' => 100,
     'user-edit' => 100,
     'subscribe' => 0,
+    'contact' => 0,
     'library-user' => 10
 ];
 /**
@@ -52,7 +53,8 @@ $res = isset($tabPageAdmin[$currentPage]);
  * Dans ce cas là, je redirige vers login.php
  */
 if ($res === true && (!isset($_SESSION['user']) || $_SESSION['user']['poid'] < $tabPageAdmin[$currentPage])) {
-    $msg = "You don't have permissions to acces at this page please Log admin user !";
-    header('Location: login?msg=' . $msg);
+    @session_start();
+    $_SESSION['msg'] = "You don't have permissions to acces at this page please Log admin user !"; 
+    header('Location: login');
     exit;
 }
