@@ -4,10 +4,11 @@
     --color-main: #a5c7d1; */
     --color-dark: #ff7b77;
     --color-light: #ffd0c4;
-    --color-main: #00162c;
+    --color-main: #
+    ;
 
     --typo-title: 'Lobster', cursive;
-    --typo-txt: 'Recursive', sans-serif;
+    --typo-txt: 'Josefin Sans';
     --spacing-1: 1rem;
     --spacing-2: 2rem;
     --spacing-3: 3rem;
