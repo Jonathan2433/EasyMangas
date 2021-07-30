@@ -6,25 +6,31 @@
 ?>
 
 <h1 class="txt-center color-light">Easy Mangas</h1>
-<section id="mangas-grid" class="container grid g-2 mt-2 m-auto w-auto">
+<?php 
+$numberOfManga = $mangas->rowCount();
+    if($numberOfManga === 0){
+        echo "<h1 class='txt-center color-main my-2'>You haven't mangas in your library yet, come back home to add in.</h1>";
+    } 
+?> 
+<section id="mangas-grid" class="container grid g-2 mt-2 m-auto w-auto p-10 p-md-7 p-lg-1">
     <?php
     foreach ($mangas as $manga) { ?>
-        <article id="manga-card-<?php echo $manga['id'] ?>"class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
-            <header class="manga-card-header my-2">
+        <article  data-aos="zoom-in-up" data-aos-duration="2000" id="manga-card-<?php echo $manga['id'] ?>"class="manga-card col-12 col-lg-4 col-xl-3 bg-light p-4 p-lg-1">
+            <header class="manga-card-header my-1">
                 <img class="txt-center w100" src="./img/dist/<?php echo $manga['img'] ?>" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
                 <h3 class="manga-header-name color-dark txt-center"><?php echo $manga['name'] ?></h3>
             </header>
-            <div class="manga-card-body txt-center d-flex f-col g-1 my-1">
-                <h4 class="manga-card-author color-dark">Author : <?php echo $manga['author'] ?></h4>
-                <h4 class="manga-card-editor color-dark">Editor : <?php echo $manga['editor'] ?></h4>
-                <h6 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
-                <p class="manga-card-tomes-read color-dark">You read the : <?php echo $manga['tomes_read'] ?> first tomes !</p>
+            <div class="manga-card-body txt-center d-flex f-col g-1">
+                <h5 class="manga-card-author color-dark">Author : <?php echo $manga['author'] ?></h4>
+                <h5 class="manga-card-editor color-dark">Editor : <?php echo $manga['editor'] ?></h4>
+                <h5 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
+                <h5 class="manga-card-tomes-read color-dark">You read the : <?php echo $manga['tomes_read'] ?> first tomes !</p>
             </div>
-            <footer class="manga-card-footer d-flex x-flex-center mb-2">
-                <a class="p-1 bg-dark color-light" href="delete-to-library?mangaId=<?php echo $manga['id'] ?>">Delete of my library</a>
+            <footer class="manga-card-footer d-flex x-flex-center mb-1">
+                <a class="p-1 bg-main color-light" href="delete-to-library?mangaId=<?php echo $manga['id'] ?>">Delete of my library</a>
             </footer>
             <div class="input-tomes">
-                <h4 class="txt-center my-1 color-dark">change tome numbers read :</h4>
+                <h5 class="txt-center color-dark">change tome numbers read :</h4>
                 <form action="library-user" method="POST" class="d-flex g-1">
                     <input type="number" class="d-block w-25 m-auto" value="<?php echo $manga['tomes_read'] ?>" name="user-tomes-read">
                     <input type="hidden" name="id-manga" value="<?php echo $manga['id'] ?>">

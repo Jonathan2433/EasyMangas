@@ -8,9 +8,11 @@ if (isset($_SERVER['REDIRECT_URL'])) {
 } else {
     $currentUrl = $_SERVER['REQUEST_URI'];
 }
+
 if ($currentUrl === '/easymanga/') {
     $currentUrl = '/';
 }
+
 $pathView = '/../src/views/';
 $pathCtrl = '/../src/controllers/';
 
@@ -20,7 +22,7 @@ $routes = [
     'manga_administration'   => $pathCtrl . 'manga_administration.php',
     'user-administration'   => $pathCtrl . 'user-administration.php',
     '/'   => $pathView . 'index.phtml',
-    'index'   => $pathView . 'index.phtml',
+    'login'   => $pathView . 'login.phtml',
     'index'   => $pathView . 'index.phtml',
     'contact'   => $pathView . 'contact.phtml',
     'logout'   => $pathView . 'logout.phtml',

@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . './Manga.php');
+require_once(__DIR__ . '/Manga.php');
 
 class Mangas extends Manga
 {
@@ -22,7 +22,7 @@ class Mangas extends Manga
                     library
                 ORDER BY 
                     name 
-                DESC
+                ASC
         ");
         } catch (\PDOException $th) {
             return false;

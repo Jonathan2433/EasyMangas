@@ -1,6 +1,6 @@
 <?php
 $userId = $_SESSION['user']['id'];
-require_once(__DIR__ . './../models/Library.php');
+require_once(__DIR__ . '/../models/Library.php');
 
 $addLibrary = new Library();
 

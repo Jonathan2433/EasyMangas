@@ -6,10 +6,10 @@
 ?>
 
 <h1 class="txt-center color-light my-2">Manga Administration</h1>
-<a class="p-1 bg-light color-dark txt-center d-block w25 m-auto" href="new-manga">NEW MANGA</a>
-<section id="mangas-admin-grid" class="container grid g-2 mt-2 m-auto w-auto">
+<a class="p-1 bg-main color-dark txt-center d-block w25 m-auto" href="new-manga">NEW MANGA</a>
+<section id="mangas-admin-grid" class="container grid g-2 mt-2 m-auto w-auto p-10 p-md-7 p-lg-1">
     <?php foreach ($getMangas as $manga) { ?>
-        <article class="manga-card col-12 col-md-6 col-lg-4 col-xl-3 bg-light p-2">
+        <article  data-aos="zoom-in-up" data-aos-duration="2000" class="manga-card col-12 col-lg-4 col-xl-3 bg-light p-4 p-lg-1">
             <header class="manga-card-header my-1">
                 <img class="txt-center w100" src="./img/dist/<?php echo $manga['img'] ?>" alt=<?php echo 'preview of : ' . $manga['name'] ?>>
                 <h3 class="manga-header-name color-dark txt-center my-1"><?php echo $manga['name'] ?></h3>
@@ -17,14 +17,14 @@
             <div class="manga-card-body txt-center d-flex f-col g-1">
                 <h4 class="manga-card-author color-dark">Author : <?php echo $manga['author'] ?></h4>
                 <h4 class="manga-card-editor color-dark">Editor : <?php echo $manga['editor'] ?></h4>
-                <h6 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
+                <h5 class="manga-card-tomes color-dark">Nb tomes : <?php echo $manga['tomes'] ?></h6>
                 <p class="manga-card-resume color-dark">Resume : <?php echo $manga['resume'] ?></p>
             </div>
             <?php if (isset($_SESSION['user']) && $_SESSION['user']['poid'] > 50) { ?>
                 <footer class="manga-card-footer d-flex x-flex-center mb-1">
-                    <a class="p-1 bg-dark color-light" 
+                    <a class="p-1 bg-main color-light" 
                     href="manga_administration?idMangaToDelete=<?php echo $manga['id'] ?>">Delete manga</a>
-                    <a class="p-1 bg-dark color-light" href="manga-edit?idManga=<?php echo $manga['id'] ?>">Edit manga</a>
+                    <a class="p-1 bg-main color-light" href="manga-edit?idManga=<?php echo $manga['id'] ?>">Edit manga</a>
                 </footer>
             <?php } ?>
         </article>

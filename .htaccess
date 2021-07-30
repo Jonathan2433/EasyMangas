@@ -1,0 +1,7 @@
+
+# HTID:18004599: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:18004599:
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule (.*) /public [R=301,L]

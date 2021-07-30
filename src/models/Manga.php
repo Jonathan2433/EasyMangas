@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . './Connect.php');
+require_once(__DIR__ . '/Connect.php');
 
 class Manga extends Connect
 {
